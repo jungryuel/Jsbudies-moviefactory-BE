@@ -1,12 +1,18 @@
+import { Comment } from 'src/comment/comment.entity';
+import { Movie } from 'src/movie/movie.entity';
+import { User } from 'src/user/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('REVIEW', { schema: 'REVIEW' })
-export class MovieEntity {
+@Entity('REVIEW', { schema: 'MOVIE' })
+export class Review {
   @PrimaryGeneratedColumn({ type: 'int', name: 'review_id' })
   review_id: number;
 
@@ -27,4 +33,18 @@ export class MovieEntity {
 
   @Column({ type: 'int', name: 'views' })
   views: number;
+
+  @Column({ type: 'int', name: 'star' })
+  star: number;
+
+  @ManyToOne(() => User, (user) => user.reviews)
+  @JoinColumn({ name: 'review_id' })
+  user: User;
+
+  @OneToMany(() => Comment, (comment) => comment.review)
+  comments: Comment[];
+
+  @ManyToOne(() => Movie, (movie) => movie.reviews)
+  @JoinColumn({ name: 'movie_id' })
+  movie: Movie;
 }

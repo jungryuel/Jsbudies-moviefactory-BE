@@ -1,7 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Review } from 'src/review/review.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
-@Entity('MOVIE', { schema: 'MOVIE' })
-export class MovieEntity {
+@Entity('Comment', { schema: 'MOVIE' })
+export class Comment {
   @PrimaryGeneratedColumn({ type: 'int', name: 'comment_id' })
   comment_id: number;
 
@@ -13,4 +21,8 @@ export class MovieEntity {
 
   @Column({ type: 'date', name: 'created_at' })
   created_at: Date;
+
+  @ManyToOne(() => Review, (review) => review.comments)
+  @JoinColumn({ name: 'review_id' })
+  review: Review;
 }

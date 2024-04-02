@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Review } from 'src/review/review.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('MOVIE', { schema: 'MOVIE' })
-export class MovieEntity {
+export class Movie {
   @PrimaryGeneratedColumn({ type: 'int', name: 'movie_id' })
   movie_id: number;
 
@@ -10,9 +11,6 @@ export class MovieEntity {
 
   @Column({ type: 'varchar', name: 'summary' })
   summary: String;
-
-  @Column({ type: 'int', name: 'point' })
-  point: number;
 
   @Column({ type: 'date', name: 'open_date' })
   open_date: Date;
@@ -25,4 +23,10 @@ export class MovieEntity {
 
   @Column({ type: 'varchar', name: 'image_url' })
   image_url: String;
+
+  @Column({ type: 'varchar', name: 'theme' })
+  theme: String;
+
+  @OneToMany(() => Review, (review) => review.movie)
+  reviews: Review[];
 }

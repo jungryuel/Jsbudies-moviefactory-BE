@@ -1,7 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Review } from 'src/review/review.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
-@Entity('USER', { schema: 'USER' })
-export class MovieEntity {
+@Entity('USER', { schema: 'MOVIE' })
+export class User {
   @PrimaryGeneratedColumn({ type: 'int', name: 'user_id' })
   user_id: number;
 
@@ -13,4 +20,7 @@ export class MovieEntity {
 
   @Column({ type: 'varchar', name: 'password' })
   password: String;
+
+  @OneToMany(() => Review, (review) => review.user)
+  reviews: Review[];
 }
