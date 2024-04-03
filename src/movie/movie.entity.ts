@@ -1,16 +1,17 @@
 import { Review } from 'src/review/review.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('MOVIE', { schema: 'MOVIE' })
+// @Entity('MOVIE', { schema: 'MOVIE' })
+@Entity({ name: 'MOVIE' })
 export class Movie {
   @PrimaryGeneratedColumn({ type: 'int', name: 'movie_id' })
   movie_id: number;
 
   @Column({ type: 'varchar', name: 'title' })
-  title: String;
+  title: string;
 
   @Column({ type: 'varchar', name: 'summary' })
-  summary: String;
+  summary: string;
 
   @Column({ type: 'date', name: 'open_date' })
   open_date: Date;
@@ -22,10 +23,10 @@ export class Movie {
   audi_acc: number;
 
   @Column({ type: 'varchar', name: 'image_url' })
-  image_url: String;
+  image_url: string;
 
   @Column({ type: 'varchar', name: 'theme' })
-  theme: String;
+  theme: string;
 
   @OneToMany(() => Review, (review) => review.movie)
   reviews: Review[];

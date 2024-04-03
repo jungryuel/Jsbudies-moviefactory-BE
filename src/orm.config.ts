@@ -1,28 +1,31 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Comment } from './comment/comment.entity';
+import { Movie } from './movie/movie.entity';
+import { Review } from './review/review.entity';
+import { User } from './user/user.entity';
 
-function ormConfig(): TypeOrmModuleOptions {
+export function ormConfig(): TypeOrmModuleOptions {
   const commonConf = {
-    SYNCRONIZE: false,
-    ENTITIES: [__dirname + '/domain/*.entity{.ts,.js}'],
-    MIGRATIONS: [__dirname + '/migrations/**/*{.ts,.js}'],
-    MIGRATIONS_RUN: false,
+    SYNCHRONIZE: true,
+    // ENTITIES: [__dirname + './**/*.entity.{ts, js}'],
+    ENTITIES: [Comment, Movie, Review, User],
+    // MIGRATIONS: [__dirname + '/migrations/**/*{ts,.js}'],
+    // MIGRATIONS_RUN: false,
   };
 
   return {
-    name: 'default',
+    // name: 'movie',
     type: 'oracle',
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
+    database: 'movie',
+    host: '192.168.80.19',
     port: Number(process.env.DB_PORT),
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
+    username: 'system',
+    password: '1234',
     logging: true,
     connectString: 'localhost:1521/orcl',
-    synchronize: commonConf.SYNCRONIZE,
+    synchronize: commonConf.SYNCHRONIZE,
     entities: commonConf.ENTITIES,
-    migrations: commonConf.MIGRATIONS,
-    migrationsRun: commonConf.MIGRATIONS_RUN,
+    // migrations: commonConf.MIGRATIONS,
+    // migrationsRun: commonConf.MIGRATIONS_RUN,
   };
 }
-
-export { ormConfig };

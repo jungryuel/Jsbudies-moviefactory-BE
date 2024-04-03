@@ -11,7 +11,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('REVIEW', { schema: 'MOVIE' })
+@Entity({ name: 'REVIEW' })
 export class Review {
   @PrimaryGeneratedColumn({ type: 'int', name: 'review_id' })
   review_id: number;
@@ -22,14 +22,14 @@ export class Review {
   @Column({ type: 'varchar', name: 'content' })
   content: String;
 
-  @Column({ type: 'boolean', name: 'like' })
-  like: boolean;
+  // @Column({ type: 'boolean', name: 'like' })
+  // like: boolean;
 
   @CreateDateColumn({ type: 'date', name: 'created_at' })
   created_at: Date;
 
-  @Column({ type: 'varchar', name: 'image_url' })
-  image_url: boolean;
+  // @Column({ type: 'varchar', name: 'image_url' })
+  // image_url: boolean;
 
   @Column({ type: 'int', name: 'views' })
   views: number;

@@ -1,13 +1,7 @@
 import { Review } from 'src/review/review.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('USER', { schema: 'MOVIE' })
+@Entity({ name: 'USER' })
 export class User {
   @PrimaryGeneratedColumn({ type: 'int', name: 'user_id' })
   user_id: number;
