@@ -7,13 +7,13 @@ export class User {
   user_id: number;
 
   @Column({ type: 'varchar', name: 'id' })
-  id: String;
+  id: string;
 
   @Column({ type: 'varchar', name: 'nick_name' })
-  nick_name: String;
+  nick_name: string;
 
   @Column({ type: 'varchar', name: 'password' })
-  password: String;
+  password: string;
 
   @OneToMany(() => Review, (review) => review.user)
   reviews: Review[];
