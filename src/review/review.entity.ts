@@ -17,10 +17,10 @@ export class Review {
   review_id: number;
 
   @Column({ type: 'varchar', name: 'title' })
-  title: String;
+  title: string;
 
   @Column({ type: 'varchar', name: 'content' })
-  content: String;
+  content: string;
 
   // @Column({ type: 'boolean', name: 'like' })
   // like: boolean;
@@ -37,14 +37,14 @@ export class Review {
   @Column({ type: 'int', name: 'star' })
   star: number;
 
-  @ManyToOne(() => User, (user) => user.reviews)
-  @JoinColumn({ name: 'review_id' })
+  @ManyToOne(() => User, (user) => user.reviews, { lazy: true })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @OneToMany(() => Comment, (comment) => comment.review)
   comments: Comment[];
 
-  @ManyToOne(() => Movie, (movie) => movie.reviews)
+  @ManyToOne(() => Movie, (movie) => movie.reviews, { lazy: true })
   @JoinColumn({ name: 'movie_id' })
   movie: Movie;
 }
