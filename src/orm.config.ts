@@ -17,9 +17,15 @@ export function ormConfig(): TypeOrmModuleOptions {
     // name: 'movie',
     type: 'oracle',
     database: 'movie',
+<<<<<<< HEAD
     host: ' 192.168.80.14',
     port: Number(process.env.DB_PORT),
     username: 'system',
+=======
+    host: 'localhost',
+    port: 1521,
+    username: 'slider',
+>>>>>>> 20caecfbab6262201b0329acb507ed31b61d22f5
     password: '1234',
     logging: true,
     connectString: 'localhost:1522/orcl',
