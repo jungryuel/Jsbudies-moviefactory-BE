@@ -14,6 +14,7 @@ import { InsertReviewDto } from 'src/user/dto/InsertReviewDto';
 import { ReviewRepository } from './review.repository';
 import { get } from 'http';
 import { ReviewListDto } from './reviewListDto';
+import { Movie } from 'src/movie/movie.entity';
 @Controller('review')
 export class ReviewController {
   constructor(private readonly reviewService: ReviewService) {}
@@ -46,11 +47,16 @@ export class ReviewController {
     );
   }
   //getall/getone
-  @Get('')
-  async findAllReviews(): Promise<ReviewListDto[]> {
+  @Get()
+  findAllReviews(): Promise<Review[]> {
     return this.reviewService.findAll();
   }
+  @Get('/:review_id')
+  async findReview(@Param('review_id') review_id: number): Promise<Review> {
+    return await this.reviewService.findOne(review_id);
+  }
 
+  //@Param('review_id') review_id: number
   //리뷰 read
   // @Get()
   //async findAllReviews(
