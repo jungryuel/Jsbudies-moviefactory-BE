@@ -15,13 +15,14 @@ import { ReviewRepository } from './review.repository';
 import { get } from 'http';
 import { ReviewListDto } from './reviewListDto';
 import { Movie } from 'src/movie/movie.entity';
+import { ReviewResponseDto } from './reviewResoponseDto';
 @Controller('review')
 export class ReviewController {
   constructor(private readonly reviewService: ReviewService) {}
 
   //리뷰 추가
   @Post()
-  async createReview(@Body() reviewDto: InsertReviewDto): Promise<Review> {
+  async createReview(@Body() reviewDto: InsertReviewDto): Promise<String> {
     return this.reviewService.createReview(reviewDto);
   }
   //리뷰 삭제
@@ -52,7 +53,9 @@ export class ReviewController {
     return this.reviewService.findAll();
   }
   @Get('/:review_id')
-  async findReview(@Param('review_id') review_id: number): Promise<Review> {
+  async findReview(
+    @Param('review_id') review_id: number,
+  ): Promise<ReviewResponseDto> {
     return await this.reviewService.findOne(review_id);
   }
 

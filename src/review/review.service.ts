@@ -7,6 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Review } from './review.entity';
 import { InsertReviewDto } from 'src/user/dto/InsertReviewDto';
 import { Repository } from 'typeorm';
+import { ReviewResponseDto } from './reviewResoponseDto';
 
 @Injectable()
 export class ReviewService {
@@ -15,10 +16,12 @@ export class ReviewService {
     private reviewRepository: Repository<Review>,
   ) {}
 
-  async createReview(reviewDto: InsertReviewDto): Promise<Review> {
+  async createReview(reviewDto: InsertReviewDto): Promise<String> {
     const review = new InsertReviewDto().toEntity(reviewDto);
-    return await this.reviewRepository.save(review);
+    await this.reviewRepository.save(review);
+    return '리뷰생성 성공';
   }
+
   async deleteReview(review_id: number): Promise<void> {
     await this.reviewRepository.delete(review_id);
   }
@@ -51,13 +54,14 @@ export class ReviewService {
   async findAll(): Promise<Review[]> {
     return this.reviewRepository.find();
   }
-  async findOne(review_id: number): Promise<Review> {
+
+  async findOne(review_id: number): Promise<ReviewResponseDto> {
     const review = await this.reviewRepository.findOne({
       where: { review_id },
       relations: ['user'],
     });
-    console.log(review);
-    return review;
+
+    return ReviewResponseDto.from(review);
   }
 }
 

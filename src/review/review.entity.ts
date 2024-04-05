@@ -37,14 +37,14 @@ export class Review {
   @Column({ type: 'int', name: 'star' })
   star: number;
 
-  @ManyToOne(() => User, (user) => user.reviews, { lazy: true })
+  @ManyToOne(() => User, (user) => user.reviews, { eager: true })
   @JoinColumn({ name: 'user_id' })
   user: User;
 
   @OneToMany(() => Comment, (comment) => comment.review)
   comments: Comment[];
 
-  @ManyToOne(() => Movie, (movie) => movie.reviews, { lazy: true })
+  @ManyToOne(() => Movie, (movie) => movie.reviews, { eager: true })
   @JoinColumn({ name: 'movie_id' })
   movie: Movie;
 }
