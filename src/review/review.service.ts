@@ -5,12 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Review } from './review.entity';
-import { ReviewRepository } from './review.repository';
-import { ReviewDto } from 'src/user/dto/ReviewDto';
-import { Movie } from 'src/movie/movie.entity';
 import { InsertReviewDto } from 'src/user/dto/InsertReviewDto';
-import { error } from 'console';
-import { ReviewDTO, ReviewListDto, movieTitleDTO } from './reviewListDto';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -59,35 +54,36 @@ export class ReviewService {
   async findOne(review_id: number): Promise<Review> {
     const review = await this.reviewRepository.findOne({
       where: { review_id },
+      relations: ['user'],
     });
     console.log(review);
     return review;
   }
-
-  // async findAll(): Promise<ReviewListDto[]> {
-  //   const movie: movieTitleDTO[] = await this.movieRepository.find();
-  //   // Review 엔티티에서 모든 리뷰를 가져옵니다.
-  //   const reviews: ReviewDTO = movie.map((v) => {
-  //     return this.reviewRepository.find({
-  //       relations: {
-  //         movie: true,
-  //       },
-  //       where: {
-  //         title: v.title,
-  //       },
-  //     });
-  //   });
-  // }
-
-  //   // 가져온 리뷰들을 ReviewListDto 형식으로 변환합니다.
-  //   const reviewList: ReviewListDto[] = reviews.map((v) => {
-  //     return {
-  //       review_id: v.review_id,
-  //       title: v.title,
-  //     };
-  //     // ReviewListDto.from;
-  //   });
-
-  //   return reviewList;
-  // }
 }
+
+// async findAll(): Promise<ReviewListDto[]> {
+//   const movie: movieTitleDTO[] = await this.movieRepository.find();
+//   // Review 엔티티에서 모든 리뷰를 가져옵니다.
+//   const reviews: ReviewDTO = movie.map((v) => {
+//     return this.reviewRepository.find({
+//       relations: {
+//         movie: true,
+//       },
+//       where: {
+//         title: v.title,
+//       },
+//     });
+//   });
+// }
+
+//   // 가져온 리뷰들을 ReviewListDto 형식으로 변환합니다.
+//   const reviewList: ReviewListDto[] = reviews.map((v) => {
+//     return {
+//       review_id: v.review_id,
+//       title: v.title,
+//     };
+//     // ReviewListDto.from;
+//   });
+
+//   return reviewList;
+// }

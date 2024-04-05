@@ -25,10 +25,15 @@ export class InsertReviewDto {
     review.title = dto.title;
     review.star = dto.star;
     review.views = 0;
+
     const movie = new Movie();
     movie.movie_id = dto.movie_id;
+    review.movie = movie;
+
     const user = new User();
     user.user_id = dto.user_id;
+    review.user = user;
+
     return review;
   }
 }
