@@ -8,20 +8,20 @@ export class CreateCommentDto {
   content: string;
 
   @IsNotEmpty()
-  review_id: number;
+  user_id: number;
 
   @IsNotEmpty()
-  user_id: number;
+  review_id: number;
 
   static toEntity(dto: CreateCommentDto) {
     const comment = new Comment();
     comment.content = dto.content;
 
-    const review = new Review();
-    review.review_id = dto.review_id;
-
     const user = new User();
     user.user_id = dto.user_id;
+
+    const review = new Review();
+    review.review_id = dto.review_id;
 
     comment.review = review;
     comment.user = user;

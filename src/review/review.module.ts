@@ -9,6 +9,6 @@ import { MovieRepository } from 'src/movie/movie.repository';
 @Module({
   imports: [TypeOrmModule.forFeature([Review])],
   controllers: [ReviewController],
-  providers: [ReviewService, ReviewRepository],
+  providers: [ReviewService],
 })
 export class ReviewModule {}

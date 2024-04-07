@@ -7,14 +7,10 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ReviewDto } from 'src/user/dto/ReviewDto';
+
 import { Review } from './review.entity';
 import { ReviewService } from './review.service';
 import { InsertReviewDto } from 'src/user/dto/InsertReviewDto';
-import { ReviewRepository } from './review.repository';
-import { get } from 'http';
-import { ReviewListDto } from './reviewListDto';
-import { Movie } from 'src/movie/movie.entity';
 import { ReviewResponseDto } from './reviewResoponseDto';
 @Controller('review')
 export class ReviewController {
