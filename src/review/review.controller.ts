@@ -47,6 +47,14 @@ export class ReviewController {
       user_id,
     );
   }
+
+  // 조회수 업데이트
+  @Patch('/views')
+  async updateViews(@Body('review_id') review_id: number): Promise<void> {
+    console.log(review_id);
+    await this.reviewService.updateViews(review_id);
+  }
+
   //getall/getone
   @Get()
   findAllReviews(): Promise<Review[]> {
