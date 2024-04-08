@@ -58,7 +58,6 @@ export class ReviewService {
   async findOne(review_id: number): Promise<ReviewResponseDto> {
     const review = await this.reviewRepository.findOne({
       where: { review_id },
-      relations: ['user'],
     });
 
     return ReviewResponseDto.from(review);
