@@ -19,17 +19,11 @@ export class Review {
   @Column({ type: 'varchar', name: 'title' })
   title: string;
 
-  @Column({ type: 'varchar', name: 'content' })
-  content: string;
-
-  // @Column({ type: 'boolean', name: 'like' })
-  // like: boolean;
+  @Column({ type: 'varchar', name: 'content', length: 2000 })
+  content: String;
 
   @CreateDateColumn({ type: 'date', name: 'created_at' })
   created_at: Date;
-
-  // @Column({ type: 'varchar', name: 'image_url' })
-  // image_url: boolean;
 
   @Column({ type: 'int', name: 'views' })
   views: number;
@@ -38,6 +32,7 @@ export class Review {
   star: number;
 
   @ManyToOne(() => User, (user) => user.reviews, { eager: true })
+
   @JoinColumn({ name: 'user_id' })
   user: User;
 
