@@ -20,7 +20,7 @@ export class Review {
   title: string;
 
   @Column({ type: 'varchar', name: 'content', length: 2000 })
-  content: String;
+  content: string;
 
   @CreateDateColumn({ type: 'date', name: 'created_at' })
   created_at: Date;
@@ -32,7 +32,6 @@ export class Review {
   star: number;
 
   @ManyToOne(() => User, (user) => user.reviews, { eager: true })
-
   @JoinColumn({ name: 'user_id' })
   user: User;
 

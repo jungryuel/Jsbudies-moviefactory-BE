@@ -32,6 +32,7 @@ export class ReviewResponseDto {
     reviewDto.created_at = review.created_at;
     reviewDto.views = review.views;
     reviewDto.star = review.star;
+
     reviewDto.nick_name = review.user ? review.user.nick_name : null; // 사용자 객체가 존재하면 user_id를 할당
 
     return reviewDto;
