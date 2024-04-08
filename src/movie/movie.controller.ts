@@ -7,13 +7,14 @@ import { Movie } from './movie.entity';
 export class MovieController {
   constructor(private readonly movieService: MovieService) {}
 
-  @Get()
-  async findAll(): Promise<MovieDto[]> {
-    return await this.movieService.findAll();
-  }
+    @Get()
+    async findAll(): Promise<MovieDto[]> {
+        return await this.movieService.findAll();
+    }
 
-  @Get('/:movie_id')
-  async findReview(@Param('movie_id') movie_id: number): Promise<Movie> {
-    return await this.movieService.findOne(movie_id);
-  }
+    @Get(':movie_id')
+    async getMovieDetails(@Param('movie_id') movie_id: number) {
+        return this.movieService.getMovieDetails(movie_id);
+    }
+
 }

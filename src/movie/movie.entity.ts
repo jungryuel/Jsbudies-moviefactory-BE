@@ -10,7 +10,7 @@ export class Movie {
   @Column({ type: 'varchar', name: 'title' })
   title: string;
 
-  @Column({ type: 'varchar', name: 'summary' })
+  @Column({ type: 'varchar', name: 'summary', length:2000 })
   summary: string;
 
   @Column({ type: 'date', name: 'open_date' })
