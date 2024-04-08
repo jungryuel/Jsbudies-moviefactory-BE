@@ -17,7 +17,7 @@ export class Review {
   review_id: number;
 
   @Column({ type: 'varchar', name: 'title' })
-  title: String;
+  title: string;
 
   @Column({ type: 'varchar', name: 'content', length: 2000 })
   content: String;
@@ -31,14 +31,15 @@ export class Review {
   @Column({ type: 'int', name: 'star' })
   star: number;
 
-  @ManyToOne(() => User, (user) => user.reviews)
+  @ManyToOne(() => User, (user) => user.reviews, { eager: true })
+
   @JoinColumn({ name: 'user_id' })
   user: User;
 
   @OneToMany(() => Comment, (comment) => comment.review)
   comments: Comment[];
 
-  @ManyToOne(() => Movie, (movie) => movie.reviews)
+  @ManyToOne(() => Movie, (movie) => movie.reviews, { eager: true })
   @JoinColumn({ name: 'movie_id' })
   movie: Movie;
 }

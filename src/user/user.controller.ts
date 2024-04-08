@@ -21,6 +21,7 @@ export class UserController {
         '로그인 실패(잘못된 아이디 또는 비밀번호입니다)',
       );
     }
+
     return user; // 성공 시 사용자 객체 반환
   }
 }
