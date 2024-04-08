@@ -22,7 +22,7 @@ export class ReviewResponseDto {
   star: number;
 
   @IsNotEmpty()
-  user_id: number;
+  nick_name: string;
 
   static async from(review: Review): Promise<ReviewResponseDto> {
     const reviewDto = new ReviewResponseDto();
@@ -32,7 +32,7 @@ export class ReviewResponseDto {
     reviewDto.created_at = review.created_at;
     reviewDto.views = review.views;
     reviewDto.star = review.star;
-    reviewDto.user_id = review.user ? review.user.user_id : null; // 사용자 객체가 존재하면 user_id를 할당
+    reviewDto.nick_name = review.user ? review.user.nick_name : null; // 사용자 객체가 존재하면 user_id를 할당
 
     return reviewDto;
   }

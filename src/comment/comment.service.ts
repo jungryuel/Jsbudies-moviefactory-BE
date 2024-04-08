@@ -72,9 +72,9 @@ export class CommentService {
     // if (newComment.review.review_id !== review_id) {
     //   throw new NotFoundException('해당 리뷰에 속한 댓글이 아닙니다.');
     // }
-    if (newComment.user.user_id !== dto.user_id) {
-      throw new NotFoundException('댓글을 수정할 권한이 없습니다.');
-    }
+    // if (newComment.user.user_id !== dto.user_id) {
+    //   throw new NotFoundException('댓글을 수정할 권한이 없습니다.');
+    // }
     newComment.content = dto.content;
     console.log(newComment);
     await this.commentRepository.save(newComment);
@@ -93,9 +93,9 @@ export class CommentService {
     // if (getComment.review.review_id !== review_id) {
     //   throw new NotFoundException('해당 리뷰에 속한 댓글이 아닙니다.');
     // }
-    if (getComment.user.user_id !== user_id) {
-      throw new NotFoundException('댓글을 삭제할 권한이 없습니다.');
-    }
+    // if (getComment.user.user_id !== user_id) {
+    //   throw new NotFoundException('댓글을 삭제할 권한이 없습니다.');
+    // }
 
     await this.commentRepository.delete({ comment_id });
   }
