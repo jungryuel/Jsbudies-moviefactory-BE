@@ -50,6 +50,16 @@ export class ReviewService {
       throw new BadRequestException('리뷰 찾을 수 없습니다.');
     }
   }
+
+  // 조회수 업데이트하기
+  async updateViews(review_id: number): Promise<void> {
+    const getReviewById = await this.reviewRepository.findOne({
+      where: { review_id: review_id },
+    });
+    getReviewById.views++;
+    await this.reviewRepository.save(getReviewById);
+  }
+
   // 리뷰 리스트 가져오기
   async findAll(): Promise<Review[]> {
     return this.reviewRepository.find();
