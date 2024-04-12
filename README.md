@@ -3,32 +3,31 @@
 
 ## 기능명세서
 
-| 유저 | 계좌 | 은행 |
-| --- | --- | --- |
-| 유저생성 | 계좌조회 | 지점조회 |
-| 유저조회 | 계좌개설 | 직원조회 |
-| 비밀번호변경 | 계좌해지 | 방문예약 |
-| 로그아웃 | 입금 |  |
-| 회원탈퇴 | 출금 |  |
-| 신용정보조회 | 입츌금내역 조회 |  |
+| 유저 | 영화 | 리뷰 | 댓글 |
+| --- | --- | --- |  --- |
+| 유저생성 | 영화 리스트 조회 | 리뷰 생성 | 댓글 생성 |
+| 로그인 | 영화 상세 조회| 리뷰 삭제 | 댓글 수정 |
+|  | | 리뷰 수정 | 댓글 삭제 |
+|  | | 리뷰 리스트 조회 | 댓글 리스트 조회 |
+|  |  | 리뷰 상세조회 |  |
 
 ## 데이터 모델링
 
-![image (2)](https://github.com/encore-full-stack-5/Bank/assets/74495717/a0bb4521-5d12-493d-ab3c-28650b243420)
+![image (2)](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F4b7e0894-1b5c-4ece-b84c-1f981d8b0958%2F98ad00a9-8e31-467c-ba35-e833b6104007%2FUntitled.png?table=block&id=5e370aaa-dd1d-4456-8d65-b2bfe31de80f&spaceId=4b7e0894-1b5c-4ece-b84c-1f981d8b0958&width=2000&userId=1dc58707-8709-4f53-965d-d14b21fe27e4&cache=v2)
 
-## 도메인 추출
+## 사용자 흐름도
 
-![image (3)](https://github.com/encore-full-stack-5/Bank/assets/74495717/bf2c87f1-6d35-4f7c-8010-6a7d43e16964)
+![image (3)](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F4b7e0894-1b5c-4ece-b84c-1f981d8b0958%2F282ff7b0-d546-484a-8299-d6a7a43b5a14%2FUntitled.png?table=block&id=66e240dc-579e-47b2-b706-cc68ecd8a7cb&spaceId=4b7e0894-1b5c-4ece-b84c-1f981d8b0958&width=2000&userId=1dc58707-8709-4f53-965d-d14b21fe27e4&cache=v2)
 
 ## 역할 배분
 
-**유저 : 이승규**
+**유저 : 김정렬**
 
-**계좌 : 김세현, 조진호**
+**영화 : 정희석**
 
-**지점 : 박현서**
+**리뷰 : 임서연**
 
-**직원 : 김부자**
+**댓글 : 조진호**
 
 ## 패키지구조 결정 DDD
 
